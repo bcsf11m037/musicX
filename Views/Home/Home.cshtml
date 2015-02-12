@@ -1,0 +1,33 @@
+﻿@*@Model musicx.Models.song*@
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+
+<div class="jumbotron" style="background-image:url(/Content/4.jpg)">
+    <h1>MUSICX!</h1>
+    <p class="lead">Listen and share your music with everyone.</p>
+</div>
+
+<div class="row" >
+    @foreach (var s in Model)
+    {
+        <div @*class="col-md-8 col-md-push-2 "*@>
+            <label class="text-info" style="padding-top:30px; font-size:20px">Name: @s.Name | </label>
+            <label class="text-info" style="padding-top:30px; font-size:20px">Artist: @s.artist | </label>
+            <label class="text-info" style="padding-top:30px; font-size:20px">Category: @s.category </label>
+            <div></div>
+            <br />
+            @*<img src="@("/Content/Images/"+name+".jpg")" width="600" height="200" alt="Hello" dir="auto" />*@
+            <audio controls="controls" src="~/songs/aFDpwk6NhZRA.128.mp3" />
+            @*@{
+        var name = s.filePath;
+            }
+            <audio controls="controls" src="@("~/songs/"+ name)" />*@
+        </div>
+    }  
+</div>
+<div id="wrapper">
+    <div class="container"></div>
+</div>

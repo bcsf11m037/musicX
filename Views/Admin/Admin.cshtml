@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="jumbotron" style="background-image:url(/Content/4.jpg)">
+    <h1>MUSICX!</h1>
+    <p class="lead">Listen and share your music with everyone.</p>
+</div>
+
+<div class="row" >
+    @foreach (var s in Model)
+    {
+        <div @*class="col-md-8 col-md-push-2 "*@>
+            <label class="text-info" style="padding-top:30px; font-size:20px">Name: @s.Name </label>
+            <label class="text-info" style="padding-top:30px; font-size:20px">Artist: @s.artist  </label>
+            <label class="text-info" style="padding-top:30px; font-size:20px">Category: @s.category </label>
+            <div></div>
+             <br />
+
+            <a href="/Admin/Update/@s.Id" class="text-info">Update</a>
+            <a href="/Admin/Delete/@s.Id" class="text-info">Delete</a>
+            @*<img src="@("/Content/Images/"+name+".jpg")" width="600" height="200" alt="Hello" dir="auto" />*@
+            <audio controls="controls" src="~/Content/01 - Party On My Mind - DownloadMing.SE.mp3" />
+            @*<audio controls="controls" src="~/songs/burn1" />*@
+        </div>
+    }
+</div>
+<div id="wrapper">
+    <div class="container"></div>
+</div>
+

@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_homeLayout.cshtml";
+}
+
+
+    <div class="jumbotron" style="background-image:url(/Content/download.jpg)">
+        <h1>MUSICX!</h1>
+        <p class="lead">Listen and share your music with everyone.</p>
+        <p><a href="/Account/signup" class="btn btn-success btn-large">Sign up &raquo;</a></p>
+    </div>
+
+    <div class="row">
+        <form id="sign">
+            <div class="col-md-3 col-md-push-8">
+                <h3>SIGN IN</h3>
+                <div class="input-group-btn">
+                    User Name<input type="text" class="form-control" placeholder="user name"  id="u1" />
+                </div>
+                <p></p>
+                <div class="input-group-btn">
+                    Password<input type="text" class="form-control" placeholder="password" id="Password" />
+                </div>
+                <p></p>
+                <div class="col-md-1 col-md-push-9">
+                    <input type="button" value="sign In" id="signin" />
+                </div>
+                <div id="div1"></div>
+            </div>
+        </form>
+        <script type="text/javascript">
+            // alert('hello')
+
+            $(document).ready(function () {
+
+
+                $("#signin").on("click", function () {
+                    var uName = $('#u1').val();
+                    var pas = $("#Password").val();
+                    
+                    $.getJSON("/Home/Verify/json", { "uname": uName, "pass": pas }, function (b) {
+                       
+                        if (b == 1) {
+                            location.href = "/Admin/Admin";                        
+                        }
+                        else if (b == 2) {
+                            location.href = "/Home/Home";
+                        }
+                        else {
+
+                            $("#div1").text("Invalid username or password");
+
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+
+

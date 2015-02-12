@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "search";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+<div class="row">
+    <div class="jumbotron" style="background-image:url(/Content/3.jpg)">
+        <h1>MUSICX!</h1>
+    </div>
+     
+
+    <div class="col-md-3 col-md-push-4">
+        <form >
+            
+                <input type="text" placeholder="Search..." id="query" name="search" value="">    
+                <input type="button" value="Search" id="b1" />
+             
+
+                <div id="d1">
+                    <audio id="aud1" src=""></audio> <br/>
+                    <label id="l1" style="font-size:20px"></label> <br />
+                    <label id="l2" style="font-size:20px"></label> <br />
+                    <label id="l3" style="font-size:20px"></label>
+                </div>
+                
+               
+           
+            
+
+        </form>
+        <script type="text/javascript">
+            // alert('hello')
+
+            $(document).ready(function () {
+
+
+                $("#b1").on("click", function () {
+                    var uName = $('#query').val();
+                    $('#d1').show();
+                   
+                    $.getJSON("/Home/SearchResult?name=" + uName, function (b) {
+                        
+                        var aud  = $('#aud1');
+                        $('#l1').text("Name :" + b.Name);
+                        $('#aud1').attr('src', b.filePath);
+                       // aud.attr('src', b.filePath);
+                        $('#l2').text("Category :" + b.category);
+                        $('#l3').text("Artist :" + b.artist);
+                       // $(window).on('hashchange', audio);
+                    });
+
+                });
+            });
+        </script>
+    </div>
+
+
+</div>
+<div id="wrapper">
+    <div class="container"></div>
+</div>
